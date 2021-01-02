@@ -17,6 +17,8 @@ num_q = 64 * 64
 min_neg = -2
 max_pos = 2
 
+#FIELD LINE STUFF **************************
+
 #electric field at point (x,y) due to the positive charge
 def E(Qpos, pos, x, y):
     den = np.hypot(x - pos[0], y - pos[1]) ** 3
@@ -58,7 +60,7 @@ for q, pos in charges:
 
 ax.set_xlabel('x-position')
 ax.set_ylabel('y-position')
-ax.set_title('Electric Field')
+ax.set_title('Electric Field Lines')
 ax.set_xlim(min_neg, max_pos)
 ax.set_ylim(min_neg, max_pos)
 ax.set_aspect('equal')
