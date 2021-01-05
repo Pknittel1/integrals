@@ -37,4 +37,8 @@ plt.contour(X, Y, Z, l, colors='black');
 plt.contourf(X, Y, Z, l, cmap='BuPu')
 plt.colorbar();
 
+#ax.set_xlabel('x-position')
+#ax.set_ylabel('y-position')
+#ax.set_title('Equipotential Lines')
+
 plt.show()
