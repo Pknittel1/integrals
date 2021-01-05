@@ -20,10 +20,10 @@ max_pos = 2
 #FIELD LINE STUFF **************************
 
 #electric field at point (x,y) due to the positive charge
-def E(Qpos, pos, x, y):
+def E(Q, pos, x, y):
     den = np.hypot(x - pos[0], y - pos[1]) ** 3
-    # E = (k * Q / r) * (direction of r)
-    return k * Qpos * (x - pos[0]) / den, k * Qpos * (y - pos[1]) / den
+    # E = (k * Q / r^r) * (direction of r)
+    return k * Q * (x - pos[0]) / den, k * Q * (y - pos[1]) / den
 
 #grid of x * y points
 nx, ny = 64, 64
