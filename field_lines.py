@@ -17,8 +17,6 @@ num_q = 64 * 64
 min_neg = -2
 max_pos = 2
 
-#FIELD LINE STUFF **************************
-
 #electric field at point (x,y) due to the positive charge
 def E(Q, pos, x, y):
     den = np.hypot(x - pos[0], y - pos[1]) ** 3
@@ -51,7 +49,7 @@ ax = fig.add_subplot(111)
 # Plot the streamlines with an appropriate colormap and arrow style
 color = 2 * np.log(np.hypot(Ex, Ey))
 ax.streamplot(x, y, Ex, Ey, color=color, linewidth=1, cmap=plt.cm.inferno,
-              density=2, arrowstyle='->', arrowsize=1.5)
+              density=1, arrowstyle='->', arrowsize=1.5)
 
 # Add filled circles for the charges themselves
 charge_colors = {True: '#aa0000', False: '#0000aa'}

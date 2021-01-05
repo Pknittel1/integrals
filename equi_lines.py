@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-plt.style.use('seaborn-white')
+#plt.style.use('seaborn-white')
 import numpy as np
 
 #position of charges
@@ -34,10 +34,10 @@ plt.contour(X, Y, Z, l, colors='black');
 
 #plt.contour(X, Y, Z, l, cmap='RdGy');
 
-plt.contourf(X, Y, Z, l, cmap='BuPu')
+plot = plt.contourf(X, Y, Z, l, cmap='BuPu')
 plt.colorbar();
 
-#ax.set_xlabel('x-position')
+#plot.set_xlabel('x-position')
 #ax.set_ylabel('y-position')
 #ax.set_title('Equipotential Lines')
 
