@@ -1,3 +1,5 @@
+#equipotential lines
+
 import matplotlib.pyplot as plt
 #plt.style.use('seaborn-white')
 import numpy as np
@@ -14,7 +16,7 @@ k = 9e9
 min_neg = -2
 max_pos = 2
 
-#electric potential at point (x,y) due to the positive charge
+#electric potential at point (x,y) due to a dipole
 def E(x, y):
     hyppos = np.hypot(x - pos[0], y - pos[1])
     hypneg = np.hypot(x - neg[0], y - neg[1])

@@ -1,3 +1,5 @@
+#motion of a charged particle due to electric force of two static point charges
+
 import matplotlib.pyplot as plt
 import numpy as np
 import time as time

@@ -1,0 +1,1 @@
+#Combination of equipotential and field lines of a dipole
