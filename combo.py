@@ -1,4 +1,5 @@
 #Combination of equipotential and field lines of a dipole
+
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
