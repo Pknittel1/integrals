@@ -4,6 +4,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import math
+import scipy.integrate as integrate
+import scipy.special as special
+from sympy import series, Symbol
+
+# Define symbol
+x = Symbol('x')
 
 ### ****************** TRAPEZOID RULE *********************
 
@@ -38,12 +44,62 @@ import math
 
 ### ************** RICHARDSON EXTRAPOLATION ****************
 
-a = 0
-b = 1
-n = 8 
-h = (b - a) / n
-total_area = 0
+# a = 0
+# b = 1
+# n = 8 
+# h = (b - a) / n
+# total_area = 0
 
-T_h = 
+# T_h = 
 
 ### *********** END OF RICHARDSON EXTRAPOLATION ************
+
+### *************** ORTHOGONAL POLYNOMIALS *****************
+
+# vec1 = [1, 1]
+# vec2 = [1, 2]
+
+# if len(vec1) == len(vec2):
+#     inner_product = 0
+#     for i in range(len(vec2)):
+#         inner_product += vec1[i] * vec2[i]
+#     print(inner_product)
+
+# def f(x):
+#     return x * x
+# def g(x):
+#     return x 
+# # <f,g> notation
+# result = integrate.quad(lambda x: f(x) * g(x), -1, 1)
+# print(result)
+
+### ************ END OF ORTHOGONAL POLYNOMIALS *************
+
+### ***************** GAUSSIAN QUADRATURE ******************
+
+# f1 = 1
+# def f2(x):
+#     return x 
+# def f3(x):
+#     return x * x
+
+# # <f,g> notation
+# def func1(fx, gx):
+#     return integrate.quad(lambda x: fx * gx, -1, 1)
+
+# # ||f|| = sqrt(<f,f>)
+# def func2(fx):
+#     return sqrt(integrate.quad(lambda x: fx * fx, -1, 1))
+
+# P0 = f1
+# P1 = f2(x) + f2(x) * func1(f2(x), f1) / f1
+# print(P1)
+# #P2 =
+
+### ************ END OF GAUSSIAN QUADRATURE ****************
+
+### ************** GAUSS-LAGUERRE QUADRATURE ***************
+
+
+
+### ********** END OF GAUSS-LAGUERRE QUADRATURE ************
