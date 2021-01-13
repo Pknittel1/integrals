@@ -77,6 +77,8 @@ x = Symbol('x')
 
 ### ***************** GAUSSIAN QUADRATURE ******************
 
+#does not work
+
 # f1 = 1
 # def f2(x):
 #     return x 

@@ -30,8 +30,8 @@ x = Symbol('x')
 # func = 1 / (1 + 25 * x * x)
 
 # # This will plot sine and its Taylor approximations
-# p = plot(func, taylor(func,0,1), taylor(func,0,3), taylor(func,0,5),
-#          (x,-0.2,0.2),legend=True, show=False)
+# p = plot(func, taylor(func, 0, 1), taylor(func, 0, 3), taylor(func, 0, 5),
+#          (x, -0.3, 0.3),legend=True, show=False)
 
 # p[0].line_color = 'blue'
 # p[1].line_color = 'green'
@@ -44,21 +44,23 @@ x = Symbol('x')
 
 ### ****************** LAGRANGE INTERPOLATION *********************
 
-# #interpolate f(x)=x^3 with three points
-# #lagrange polynomial thus has degree 2 since 3 points
-# x = np.array([0, 1, 2])
+# does not work right now
+
+#interpolate f(x)=x^3 with three points
+#lagrange polynomial thus has degree 2 since 3 points
+# x = np.array([-1, 0, 1])
 # y = x**3
-# lag_vec = lagrange(x, y)
+# poly = lagrange(x, y)
 # Polynomial(poly).coef
 
 # print(poly)
 # print(Polynomial(poly).coef)
 
-# # p = plot(y, Polynomial(poly).coef, (x,-0.2,0.2),legend=True, show=False)
-# # p[0].line_color = 'blue'
-# # p[1].line_color = 'green'
+# p = plot(y, Polynomial(poly).coef, (x,-0.2,0.2),legend=True, show=False)
+# p[0].line_color = 'blue'
+# p[1].line_color = 'green'
 
-# #p.show()
+# p.show()
 
 ### ************** END OF LAGRANGE INTERPOLATION *****************
 
@@ -72,7 +74,7 @@ x = Symbol('x')
 
 # half_interval_size = 1
 # i = 0
-# n = 16
+# n = 8
 # h = 2 / n
 # xi = -half_interval_size + (i * h)
 
@@ -101,13 +103,13 @@ x = Symbol('x')
 # plt.ylim(-2, 2)
 # plt.show()
 
-### ****************** END OF UNIFORM POINTS *********************
+## ****************** END OF UNIFORM POINTS *********************
 
-### ******************** CHEBYSHEV POINTS ************************
+## ******************** CHEBYSHEV POINTS ************************
 
 half_interval_size = 1
 i = 0
-n = 16
+n = 8
 theta = i * math.pi / n
 xi = -1 * cos(theta) * half_interval_size
 
