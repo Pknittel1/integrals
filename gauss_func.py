@@ -13,6 +13,82 @@ from mpl_toolkits import mplot3d
 # TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 2D
 # simplification of integrating over real numbers by assuming func is zero beyond +/-10
 
+#func = e^-x^2
+f = lambda x : np.exp(-x**2)
+a = -10; b = 10
+
+exact_area = np.sqrt(np.pi)
+#print("exact area  =", exact_area)
+columns = ('h', 'trapezoid area', 'error')
+approx = []
+error = []
+arr = [2, 4, 8, 16, 32, 64]
+for n in arr :
+    h = (b - a) / n
+    total_area = 0
+    for i in range(0, n) :
+        total_area += h * 0.5 * (f(a + i * h) + f(a + (i + 1) * h))
+    approx.append(total_area)
+    error.append(np.abs(total_area - exact_area))
+
+title_text = 'Error in the Trapezoid Approximation Method'
+fig_background_color = 'skyblue'
+fig_border = 'steelblue'
+data =  [
+            [ 'Trapezoid Approximation', 'Error'],
+            [ arr[0], approx[0], error[0]],
+            [ arr[1], approx[1], error[1]],
+            [ arr[2], approx[2], error[2]],
+            [ arr[3], approx[3], error[3]],
+            [ arr[4], approx[4], error[4]],
+        ]
+# Pop the headers from the data array
+column_headers = data.pop(0)
+row_headers = [x.pop(0) for x in data]
+cell_text = []
+for row in data:
+    cell_text.append([x for x in row])
+# Create the figure. Setting a small pad on tight_layout
+plt.figure(linewidth = 2,
+           edgecolor = fig_border,
+           facecolor = fig_background_color,
+           tight_layout = {'pad':1},
+          )
+# Add a table at the bottom of the axes
+the_table = plt.table(cellText = cell_text,
+                      rowLabels = row_headers,
+                      rowLoc = 'right',
+                      colLabels = column_headers,
+                      loc = 'center')
+# Make the rows taller 
+the_table.scale(1, 1.5)
+# Hide axes
+ax = plt.gca()
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+# Hide axes border
+plt.box(on=None)
+# Add title
+plt.suptitle(title_text)
+plt.show()
+
+N = 64
+# x and y values for the trapezoid rule
+x = np.linspace(a,b,N+1)
+y = f(x)
+# X and Y values for plotting y=f(x)
+X = np.linspace(a,b,100)
+Y = f(X)
+plt.plot(X,Y)
+for i in range(N):
+    xs = [x[i],x[i],x[i+1],x[i+1]]
+    ys = [0,f(x[i]),f(x[i+1]),0]
+    plt.fill(xs,ys,'b',edgecolor='b',alpha=0.2)
+plt.title('Uniform Trapezoid Rule, N = {}'.format(N))
+plt.show()
+
+# TRAPEZOID INTEGRATION WITH NON-UNIFORM POINT DISTRIBUTION 2D
+
 # #func = e^-x^2
 # f = lambda x : np.exp(-x**2)
 # a = -10; b = 10
@@ -47,47 +123,8 @@ from mpl_toolkits import mplot3d
 #     xs = [x[i],x[i],x[i+1],x[i+1]]
 #     ys = [0,f(x[i]),f(x[i+1]),0]
 #     plt.fill(xs,ys,'b',edgecolor='b',alpha=0.2)
-# plt.title('Uniform Trapezoid Rule, N = {}'.format(N))
+# plt.title('Non-Uniform Trapezoid Rule, N = {}'.format(N))
 # plt.show()
-
-# TRAPEZOID INTEGRATION WITH NON-UNIFORM POINT DISTRIBUTION 2D
-
-#func = e^-x^2
-f = lambda x : np.exp(-x**2)
-a = -10; b = 10
-exact_area = np.sqrt(np.pi)
-print("exact area  =", exact_area)
-
-arr = [2, 4, 8, 16, 32, 64]
-for n in arr :
-    h = (b - a) / n
-    total_area = 0
-    if n > 2:
-        for j in range(1, n) :
-            total_area += f(a + j * h)
-        total_area += 0.5 * f(a)
-        total_area += 0.5 * f(b)
-        total_area *= h
-    else:
-        total_area += h * 0.5 * (f(a) + f(a + h))
-        total_area += h * 0.5 * (f(a + h) + f(a + 2*h))
-    print("area approximation =", total_area)
-    print("error =", np.abs(total_area - exact_area))
-
-N = 64
-# x and y values for the trapezoid rule
-x = np.linspace(a,b,N+1)
-y = f(x)
-# X and Y values for plotting y=f(x)
-X = np.linspace(a,b,100)
-Y = f(X)
-plt.plot(X,Y)
-for i in range(N):
-    xs = [x[i],x[i],x[i+1],x[i+1]]
-    ys = [0,f(x[i]),f(x[i+1]),0]
-    plt.fill(xs,ys,'b',edgecolor='b',alpha=0.2)
-plt.title('Non-Uniform Trapezoid Rule, N = {}'.format(N))
-plt.show()
 
 # TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 3D
 # simplification of integrating over real numbers by assuming func is zero beyond +/-10
@@ -100,21 +137,16 @@ plt.show()
 # #exact_area = np.sqrt(np.pi)
 # #print("exact area  =", exact_area)
 
-# arr = [4, 8, 16, 32, 64]
+# arr = [4, 8, 16, 32, 64, 128, 256, 512]
 # for n in arr :
 #     h = (b - a) / n
 #     total_area = 0
-#     if n > 2:
-#         for j in range(0, n) :
-#             for k in range(1, n) :
-#                 total_area += h * 0.5 * f(k, j)
-#                 total_area += h * 0.5 * f(k, j + 1)
-#             total_area += h * 0.25 * f(0, j)
-#             total_area += h * 0.25 * f(0, j + 1)
-#             total_area += h * 0.25 * f(n, j)
-#             total_area += h * 0.25 * f(n, j + 1)
-#     #else:
-#         #fix
+#     for j in range(0, n) :
+#         for i in range(0, n) :
+#             total_area += h * h * 0.25 * f(i, j)
+#             total_area += h * h * 0.25 * f(i, j + 1)
+#             total_area += h * h * 0.25 * f(i + 1, j)
+#             total_area += h * h * 0.25 * f(i + 1, j + 1)
 #     print("area approximation =", total_area)
 #     #print("error =", np.abs(total_area - exact_area))
 
