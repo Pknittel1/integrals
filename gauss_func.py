@@ -23,8 +23,8 @@ columns = ('h', 'trapezoid area', 'error')
 approx = []
 error = []
 errorh = []
-arr = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-arr2 = [1, 1/2, 1/4, 1/8, 1/16, 1/32, 1/64, 1/128, 1/256, 1/512, 1/1024]
+arr = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192]
+arr2 = [1, 1/2, 1/4, 1/8, 1/16, 1/32, 1/64, 1/128, 1/256, 1/512, 1/1024, 1/2048, 1/4096, 1/8192]
 for n in arr :
     h = (b - a) / n
     total_area = 0
@@ -51,7 +51,20 @@ data =  [
             [ arr[8], arr2[8], approx[8], error[8], errorh[8]],
             [ arr[9], arr2[9], approx[9], error[9], errorh[9]],
             [ arr[10], arr2[10], approx[10], error[10], errorh[10]],
+            [arr[11], arr2[11], approx[11], error[11], errorh[11]],
+            [arr[12], arr2[12], approx[12], error[12], errorh[12]],
+            [arr[13], arr2[13], approx[13], error[13], errorh[13]],
         ]
+
+#ERROR PLOT
+fig = plt.figure()
+ax = fig.add_subplot()
+ax.plot(arr2, error, 'ro')
+ax.set_yscale('log')
+ax.set_xscale('log')
+ax.set_xlabel('h')
+ax.set_ylabel('error')
+
 # Pop the headers from the data array
 column_headers = data.pop(0)
 row_headers = [x.pop(0) for x in data]
@@ -84,6 +97,7 @@ plt.box(on=None)
 plt.suptitle(title_text)
 plt.show()
 
+#GRAPH OF FUNCTION
 N = 64
 # x and y values for the trapezoid rule
 x = np.linspace(a,b,N+1)
