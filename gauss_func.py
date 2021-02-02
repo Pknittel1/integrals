@@ -33,7 +33,6 @@ from mpl_toolkits import mplot3d
 #     approx.append(total_area)
 #     error.append(np.abs(total_area - exact_area_0_1))
 #     errorh.append(np.abs(total_area - exact_area_0_1) / (h * h))
-#     #error.append(np.abs(total_area - exact_area))
 
 # title_text = 'Error in the Trapezoid Approximation Method, Function: e^-x^2'
 # fig_background_color = 'skyblue'
@@ -117,9 +116,8 @@ from mpl_toolkits import mplot3d
 
 # #func = e^-x^2
 # f = lambda x : np.exp(-(x**2))
-# a1 = -5
-# b1 = 5
-# n1 = 30
+# a1 = 0
+# b1 = 1
 # #this arrary is the different L/2 tried to increase accuracy of integral
 # L = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
 
@@ -138,7 +136,7 @@ from mpl_toolkits import mplot3d
 #     for i in range(0, n) :
 #         total_area += h * 0.5 * (f(a1 + i * h) + f(a1 + (i + 1) * h))
 #     approx.append(total_area)
-#     error.append(np.abs(total_area - exact_area))
+#     error.append(np.abs(total_area - exact_area_0_1))
 
 # title_text = 'Error in the Trapezoid Method (changing h), Function: e^-x^2'
 # fig_background_color = 'skyblue'
@@ -190,6 +188,9 @@ from mpl_toolkits import mplot3d
 # plt.suptitle(title_text)
 # plt.show()
 
+# # changing L *******************************************
+
+# n1 = 128
 # for b in L :
 #     a = -b
 #     h = (b - a) / n1
@@ -253,11 +254,9 @@ from mpl_toolkits import mplot3d
 #func = e^-x^2
 f = lambda x : np.exp(-(x**2))
 #this arrary is the different L/2 tried to increase accuracy of integral
-L = [1, 2, 4, 8, 16, 32, 64, 128]
+L = [1/4, 1/2, 3/4, 1, 2, 3, 4, 8]
 #labels of L
-# labL = ['L = 2', 'L = 4', 'L = 8', 'L = 16', 'L = 32', 'L = 64', 'L = 128', 'L = 256']
-labL = ['L = 1', 'L = 2', 'L = 4', 'L = 8', 'L = 16', 'L = 32', 'L = 64', 'L = 128']
-
+labL = ['L = 1/4', 'L = 1/2', 'L = 3/4', 'L = 1', 'L = 2', 'L = 3', 'L = 4', 'L = 8']
 exact_area = np.sqrt(np.pi)
 exact_area_0_1 = 0.746824
 columns = ('h', 'trapezoid area', 'error') 
@@ -274,9 +273,7 @@ for n in arr :
         total_area = 0
         for k in range(0, n) :
             total_area += h * 0.5 * (f(a + k * h) + f(a + (k + 1) * h))
-        e[i][j] = np.abs(total_area - exact_area)
-        # print(i)
-        # print(j)
+        e[i][j] = np.abs(total_area - exact_area_0_1)
         j += 1
     i += 1
 
@@ -325,6 +322,22 @@ ax.get_yaxis().set_visible(False)
 plt.box(on=None)
 # Add title
 plt.suptitle(title_text)
+plt.show()
+
+#GRAPH OF FUNCTION
+N = 4
+# x and y values for the trapezoid rule
+x = np.linspace(a, b, N+1)
+y = f(x)
+# X and Y values for plotting y=f(x)
+X = np.linspace(a, b, 100)
+Y = f(X)
+plt.plot(X,Y)
+for i in range(N):
+    xs = [x[i], x[i], x[i+1], x[i+1]]
+    ys = [0, f(x[i]), f(x[i+1]), 0]
+    plt.fill(xs, ys, 'b', edgecolor = 'b', alpha = 0.2)
+plt.title('Uniform Trapezoid Rule, N = {}'.format(N))
 plt.show()
 
 # TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 3D **********************************************
