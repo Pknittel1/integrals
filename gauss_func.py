@@ -113,83 +113,84 @@ from mpl_toolkits import mplot3d
 # plt.title('Uniform Trapezoid Rule, N = {}'.format(N))
 # plt.show()
 
-# TRAPEZOID INTEGRATION 2D PARAMETER TESTING ********************************************
+# TRAPEZOID INTEGRATION 2D PARAMETER TESTING ************************************************************
 
-#func = e^-x^2
-f = lambda x : np.exp(-(x**2))
-a1 = -5
-b1 = 5
-n1 = 10
-c = [1, 2, 4, 8, 16, 32, 64]
+# #func = e^-x^2
+# f = lambda x : np.exp(-(x**2))
+# a1 = -5
+# b1 = 5
+# n1 = 30
+# #this arrary is the different L/2 tried to increase accuracy of integral
+# L = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
 
-exact_area = np.sqrt(np.pi)
-exact_area_0_1 = 0.746824
-columns = ('h', 'trapezoid area', 'error')
-approx = []
-error = []
-approx2 = []
-error2 = []
-arr = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
-arr2 = [1, 1/2, 1/4, 1/8, 1/16, 1/32, 1/64, 1/128, 1/256, 1/512, 1/1024]
-for n in arr :
-    h = (b1 - a1) / n
-    total_area = 0
-    for i in range(0, n) :
-        total_area += h * 0.5 * (f(a1 + i * h) + f(a1 + (i + 1) * h))
-    approx.append(total_area)
-    error.append(np.abs(total_area - exact_area))
+# exact_area = np.sqrt(np.pi)
+# exact_area_0_1 = 0.746824
+# columns = ('h', 'trapezoid area', 'error')
+# approx = []
+# error = []
+# approx2 = []
+# error2 = []
+# arr = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+# arr2 = [1, 1/2, 1/4, 1/8, 1/16, 1/32, 1/64, 1/128, 1/256, 1/512, 1/1024]
+# for n in arr :
+#     h = (b1 - a1) / n
+#     total_area = 0
+#     for i in range(0, n) :
+#         total_area += h * 0.5 * (f(a1 + i * h) + f(a1 + (i + 1) * h))
+#     approx.append(total_area)
+#     error.append(np.abs(total_area - exact_area))
 
-title_text = 'Error in the Trapezoid Method (changing h), Function: e^-x^2'
-fig_background_color = 'skyblue'
-fig_border = 'steelblue'
-data =  [
-        [ 'h', 'Trapezoid Approximation', 'Error'],
-        [ arr[0], arr2[0], approx[0], error[0], 
-        [ arr[1], arr2[1], approx[1], error[1],
-        [ arr[2], arr2[2], approx[2], error[2],
-        [ arr[3], arr2[3], approx[3], error[3],
-        [ arr[4], arr2[4], approx[4], error[4],
-        # [ arr[5], arr2[5], approx[5], error[5],
-        # [ arr[6], arr2[6], approx[6], error[6],
-        # [ arr[7], arr2[7], approx[7], error[7],
-        # [ arr[8], arr2[8], approx[8], error[8],
-        # [ arr[9], arr2[9], approx[9], error[9],
-        # [ arr[10], arr2[10], approx[10], error[10],
-    ]
+# title_text = 'Error in the Trapezoid Method (changing h), Function: e^-x^2'
+# fig_background_color = 'skyblue'
+# fig_border = 'steelblue'
+# data =  [
+#         [ 'h', 'Trapezoid Approximation', 'Error'],
+#         [ arr[0], arr2[0], approx[0], error[0]], 
+#         [ arr[1], arr2[1], approx[1], error[1]],
+#         [ arr[2], arr2[2], approx[2], error[2]],
+#         [ arr[3], arr2[3], approx[3], error[3]],
+#         [ arr[4], arr2[4], approx[4], error[4]],
+#         [ arr[5], arr2[5], approx[5], error[5]],
+#         [ arr[6], arr2[6], approx[6], error[6]],
+#         [ arr[7], arr2[7], approx[7], error[7]],
+#         [ arr[8], arr2[8], approx[8], error[8]],
+#         [ arr[9], arr2[9], approx[9], error[9]],
+#         [ arr[10], arr2[10], approx[10], error[10]],
+#     ]
 
-# Pop the headers from the data array
-column_headers = data.pop(0)
-row_headers = [x.pop(0) for x in data]
-cell_text = []
-for row in data:
-    cell_text.append([x for x in row])
-# Create the figure. Setting a small pad on tight_layout
-plt.figure(linewidth = 2,
-           edgecolor = fig_border,
-           facecolor = fig_background_color,
-           tight_layout = {'pad':1},
-          )
-# Add a table at the bottom of the axes
-the_table = plt.table(cellText = cell_text,
-                      rowLabels = row_headers,
-                      rowLoc = 'right',
-                      colLabels = column_headers,
-                      loc = 'center')
-# Make the rows taller 
-the_table.scale(1, 1.2)
-the_table.auto_set_font_size(False)
-the_table.set_fontsize(9)
-# Hide axes
-ax = plt.gca()
-ax.get_xaxis().set_visible(False)
-ax.get_yaxis().set_visible(False)
-# Hide axes border
-plt.box(on=None)
-# Add title
-plt.suptitle(title_text)
-plt.show()
+# # Pop the headers from the data array
+# column_headers = data.pop(0)
+# row_headers = [x.pop(0) for x in data]
+# cell_text = []
+# for row in data:
+#     cell_text.append([x for x in row])
+# # Create the figure. Setting a small pad on tight_layout
+# plt.figure(linewidth = 2,
+#            edgecolor = fig_border,
+#            facecolor = fig_background_color,
+#            tight_layout = {'pad':1},
+#           )
+# # Add a table at the bottom of the axes
+# the_table = plt.table(cellText = cell_text,
+#                       rowLabels = row_headers,
+#                       rowLoc = 'right',
+#                       colLabels = column_headers,
+#                       loc = 'center')
+# # Make the rows taller 
+# the_table.scale(1, 1.2)
+# the_table.auto_set_font_size(False)
+# the_table.set_fontsize(9)
+# # Hide axes
+# ax = plt.gca()
+# ax.get_xaxis().set_visible(False)
+# ax.get_yaxis().set_visible(False)
+# # Hide axes border
+# plt.box(on=None)
+# # Add title
+# plt.suptitle(title_text)
+# plt.show()
 
-# for b in c :
+# for b in L :
 #     a = -b
 #     h = (b - a) / n1
 #     total_area = 0
@@ -200,17 +201,17 @@ plt.show()
 
 # data2 =  [
 #         [ 'h', 'Trapezoid Approximation', 'Error'],
-#         [ arr[0], arr2[0], approx2[0], error2[0], 
-#         [ arr[1], arr2[1], approx2[1], error2[1],
-#         [ arr[2], arr2[2], approx2[2], error2[2],
-#         [ arr[3], arr2[3], approx2[3], error2[3],
-#         [ arr[4], arr2[4], approx2[4], error2[4],
-#         [ arr[5], arr2[5], approx2[5], error2[5],
-#         [ arr[6], arr2[6], approx2[6], error2[6],
-#         [ arr[7], arr2[7], approx2[7], error2[7],
-#         [ arr[8], arr2[8], approx2[8], error2[8],
-#         [ arr[9], arr2[9], approx2[9], error2[9],
-#         [ arr[10], arr2[10], approx2[10], error2[10],
+#         [ arr[0], arr2[0], approx2[0], error2[0]], 
+#         [ arr[1], arr2[1], approx2[1], error2[1]],
+#         [ arr[2], arr2[2], approx2[2], error2[2]],
+#         [ arr[3], arr2[3], approx2[3], error2[3]],
+#         [ arr[4], arr2[4], approx2[4], error2[4]],
+#         [ arr[5], arr2[5], approx2[5], error2[5]],
+#         [ arr[6], arr2[6], approx2[6], error2[6]],
+#         [ arr[7], arr2[7], approx2[7], error2[7]],
+#         [ arr[8], arr2[8], approx2[8], error2[8]],
+#         [ arr[9], arr2[9], approx2[9], error2[9]],
+#         [ arr[10], arr2[10], approx2[10], error2[10]],
 #     ]
 
 # title_text2 = 'Error in the Trapezoid Method (changing L), Function: e^-x^2'
@@ -247,7 +248,86 @@ plt.show()
 # plt.suptitle(title_text2)
 # plt.show()
 
-# TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 3D ******************************
+# TRAPEZOID INTEGRATION 2D PARAMETER TESTING comparing error ********************************************
+
+#func = e^-x^2
+f = lambda x : np.exp(-(x**2))
+#this arrary is the different L/2 tried to increase accuracy of integral
+L = [1, 2, 4, 8, 16, 32, 64, 128]
+#labels of L
+# labL = ['L = 2', 'L = 4', 'L = 8', 'L = 16', 'L = 32', 'L = 64', 'L = 128', 'L = 256']
+labL = ['L = 1', 'L = 2', 'L = 4', 'L = 8', 'L = 16', 'L = 32', 'L = 64', 'L = 128']
+
+exact_area = np.sqrt(np.pi)
+exact_area_0_1 = 0.746824
+columns = ('h', 'trapezoid area', 'error') 
+arr = [1, 2, 4, 8, 16, 32, 64, 128]
+labh = [ 'h = 1', 'h = 1/2', 'h = 1/4', 'h = 1/8', 'h = 1/16', 'h = 1/32', 'h = 1/64', 'h = 1/128']
+# Creates a list containing arr lists, each of L items, all set to -1
+e = [[-1 for x in range(len(L))] for y in range(len(arr))] 
+i = 0
+for n in arr :
+    j = 0
+    for b in L:
+        a = 0
+        h = (b - a) / n
+        total_area = 0
+        for k in range(0, n) :
+            total_area += h * 0.5 * (f(a + k * h) + f(a + (k + 1) * h))
+        e[i][j] = np.abs(total_area - exact_area)
+        # print(i)
+        # print(j)
+        j += 1
+    i += 1
+
+title_text = 'Comparing Error in Changing L and h, Function: e^-x^2'
+fig_background_color = 'skyblue'
+fig_border = 'steelblue'
+data =  [
+        [ labL[0], labL[1], labL[2], labL[3], labL[4], labL[5], labL[6], labL[7]],
+        [ labh[0], e[0][0], e[0][1], e[0][2], e[0][3], e[0][4], e[0][5], e[0][6], e[0][7]],  
+        [ labh[1], e[1][0], e[1][1], e[1][2], e[1][3], e[1][4], e[1][5], e[1][6], e[1][7]],
+        [ labh[2], e[2][0], e[2][1], e[2][2], e[2][3], e[2][4], e[2][5], e[2][6], e[2][7]],
+        [ labh[3], e[3][0], e[3][1], e[3][2], e[3][3], e[3][4], e[3][5], e[3][6], e[3][7]],
+        [ labh[4], e[4][0], e[4][1], e[4][2], e[4][3], e[4][4], e[4][5], e[4][6], e[4][7]],
+        [ labh[5], e[5][0], e[5][1], e[5][2], e[5][3], e[5][4], e[5][5], e[5][6], e[5][7]],
+        [ labh[6], e[6][0], e[6][1], e[6][2], e[6][3], e[6][4], e[6][5], e[6][6], e[6][7]],
+        [ labh[7], e[7][0], e[7][1], e[7][2], e[7][3], e[7][4], e[7][5], e[7][6], e[7][7]],
+    ]
+
+# Pop the headers from the data array
+column_headers = data.pop(0)
+row_headers = [x.pop(0) for x in data]
+cell_text = []
+for row in data:
+    cell_text.append([x for x in row])
+# Create the figure. Setting a small pad on tight_layout
+plt.figure(linewidth = 2,
+           edgecolor = fig_border,
+           facecolor = fig_background_color,
+           tight_layout = {'pad':1},
+          )
+# Add a table at the bottom of the axes
+the_table = plt.table(cellText = cell_text,
+                      rowLabels = row_headers,
+                      rowLoc = 'right',
+                      colLabels = column_headers,
+                      loc = 'center')
+# Make the rows taller 
+the_table.scale(1, 1.2)
+the_table.auto_set_font_size(False)
+the_table.set_fontsize(8)
+# Hide axes
+ax = plt.gca()
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+# Hide axes border
+plt.box(on=None)
+# Add title
+plt.suptitle(title_text)
+plt.show()
+
+# TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 3D **********************************************
 # simplification of integrating over real numbers by assuming func is zero beyond +/-10
 
 # #func = e^-(x^2 + y^2)
