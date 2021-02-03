@@ -10,7 +10,7 @@ from scipy.interpolate import lagrange
 from numpy.polynomial.polynomial import Polynomial
 from mpl_toolkits import mplot3d
 
-# TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 2D PARAMETER TESTING ***************************
+# TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 2D PARAMETER TESTING *******************************
 
 # #func = e^-x^2
 # f = lambda x : np.exp(-(x**2))
@@ -112,7 +112,7 @@ from mpl_toolkits import mplot3d
 # plt.title('Uniform Trapezoid Rule, N = {}'.format(Num))
 # plt.show()
 
-# # changing L *******************************************
+# # changing L **********************************************************************************************
 
 # #func = e^-x^2
 # f = lambda x : np.exp(-(x**2))
@@ -214,14 +214,15 @@ from mpl_toolkits import mplot3d
 # plt.title('Uniform Trapezoid Rule, N = {}'.format(Num))
 # plt.show()
 
-# TRAPEZOID INTEGRATION 2D PARAMETER TESTING comparing error ********************************************
+# TRAPEZOID INTEGRATION 2D PARAMETER TESTING comparing error of h and L *************************************
 
 # #func = e^-x^2
 # f = lambda x : np.exp(-(x**2))
 # #this arrary is the different L/2 tried to increase accuracy of integral
-# L = [1/4, 1/2, 3/4, 1, 2, 3, 4, 8]
-# #labels of L
-# labL = ['L = 1/4', 'L = 1/2', 'L = 3/4', 'L = 1', 'L = 2', 'L = 3', 'L = 4', 'L = 8']
+# # L = [1/4, 1/2, 3/4, 1, 2, 3, 4, 8]
+# # labL = ['L = 1/4', 'L = 1/2', 'L = 3/4', 'L = 1', 'L = 2', 'L = 3', 'L = 4', 'L = 8']
+# # L = [1, 2, 4, 8, 16, 32, 64, 128]
+# # labL = [ 'L = 1', 'L = 2', 'L = 4', 'L = 8', 'L = 16', 'L = 32', 'L = 64', 'L = 128']
 # exact_area = np.sqrt(np.pi)
 # exact_area_0_1 = 0.746824
 # columns = ('h', 'trapezoid area', 'error') 
@@ -305,7 +306,7 @@ from mpl_toolkits import mplot3d
 # plt.title('Uniform Trapezoid Rule, N = {}'.format(N))
 # plt.show()
 
-# TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 3D **********************************************
+# TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 3D **************************************************
 # simplification of integrating over real numbers by assuming func is zero beyond +/-10
 
 # #func = e^-(x^2 + y^2)
