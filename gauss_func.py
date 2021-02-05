@@ -219,7 +219,7 @@ from mpl_toolkits import mplot3d
 # #func = e^-x^2
 # f = lambda x : np.exp(-(x**2))
 # #this arrary is the different L/2 tried to increase accuracy of integral
-# # L = [1/4, 1/2, 3/4, 1, 2, 3, 4, 8]
+L = [1, 2, 4, 8]
 # # labL = ['L = 1/4', 'L = 1/2', 'L = 3/4', 'L = 1', 'L = 2', 'L = 3', 'L = 4', 'L = 8']
 # # L = [1, 2, 4, 8, 16, 32, 64, 128]
 # # labL = [ 'L = 1', 'L = 2', 'L = 4', 'L = 8', 'L = 16', 'L = 32', 'L = 64', 'L = 128']
