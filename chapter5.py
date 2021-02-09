@@ -72,25 +72,25 @@ x = Symbol('x')
 
 ### ********************* UNIFORM POINTS *************************
 
-# half_interval_size = 1
+# L = 1
 # i = 0
 # n = 8
 # h = 2 / n
-# xi = -half_interval_size + (i * h)
+# xi = -L + (i * h)
 
 # func = 1 / (1 + 25 * x * x)
 
 # x_vals = []
 # y_vals = []
 # for j in range(n + 1) :
-#     x_value = -half_interval_size + (j * h)
+#     x_value = -L + (j * h)
 #     x_vals.append(x_value)
 #     y_value = 1 / (1 + 25 * x_value * x_value)
 #     y_vals.append(y_value)
 
-# x_vals2 = np.linspace(-half_interval_size, half_interval_size, 1001)
+# x_vals2 = np.linspace(-L, L, 1001)
 # y_vals2 = []
-# for k in range(1001) :
+# for k in range(0, 1001) :
 #     y_value2 = 1 / (1 + 25 * x_vals2[k] * x_vals2[k])
 #     y_vals2.append(y_value2)
 
@@ -107,27 +107,27 @@ x = Symbol('x')
 
 ## ******************** CHEBYSHEV POINTS ************************
 
-half_interval_size = 1
+L = 4
 i = 0
-n = 8
+n = 16
 theta = i * math.pi / n
-xi = -1 * cos(theta) * half_interval_size
-
-func = 1 / (1 + 25 * x * x)
+xi = -1 * cos(theta) * L
 
 x_vals = []
 y_vals = []
 for j in range(n + 1) :
     theta = j * math.pi / n
-    x_value = -1 * np.cos(theta) * half_interval_size
+    x_value = -1 * np.cos(theta) * L
     x_vals.append(x_value)
-    y_value = 1 / (1 + 25 * x_value * x_value)
+    #y_value = 1 / (1 + 25 * x_value * x_value)
+    y_value = np.exp(-(x_value * x_value))
     y_vals.append(y_value)
 
-x_vals2 = np.linspace(-half_interval_size, half_interval_size, 1001)
+x_vals2 = np.linspace(-L, L, 1001)
 y_vals2 = []
-for k in range(1001) :
-    y_value2 = 1 / (1 + 25 * x_vals2[k] * x_vals2[k])
+for k in range(0, 1001) :
+    #y_value2 = 1 / (1 + 25 * x_vals2[k] * x_vals2[k])
+    y_value2 = np.exp(-(x_vals2[k] * x_vals2[k]))
     y_vals2.append(y_value2)
 
 coefficients = np.polyfit(x_vals, y_vals, n + 1)
@@ -136,7 +136,7 @@ new_x = np.linspace(x_vals[0], x_vals[-1])
 new_y = poly(new_x)
 plt.plot(x_vals, y_vals, "o", new_x, new_y)
 plt.plot(x_vals2, y_vals2)
-plt.ylim(-2, 2)
+plt.ylim(-0.5, 1.5)
 plt.show()
 
 ### ***************** END OF CHEBYSHEV POINTS ********************
