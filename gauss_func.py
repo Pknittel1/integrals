@@ -14,22 +14,23 @@ from mpl_toolkits import mplot3d
 
 # #func = e^-x^2
 # f = lambda x : np.exp(-(x**2))
-# # a1 = -40
-# # b1 = 40
-# # exact_area = np.sqrt(np.pi)
-# #exact_area = 1.7724538509055159
+# a1 = -8
+# b1 = 8
+# exact_area = np.sqrt(np.pi)
 # # this is the exact area form the interval from 0 to 1
 # # a1 = 0
 # # b1 = 1
-# # # changing the number of digits here gives weird results
-# # exact_area = 0.74682413
-# exact_area = 0.74682413281229
+# # exact_area = 0.74682413281229
 # approx = []
 # error = []
 # errorh = []
-# arr = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768]
-# arr2 = [1, 1/2, 1/4, 1/8, 1/16, 1/32, 1/64, 1/128, 1/256, 1/512, 1/1024, 1/2048, 1/4096, 1/8192, 1/16384, 1/32768]
-# for n in arr :
+# #use a loop and change limit on loop and extend
+# arr = []
+# arr2 = []
+# index = 0
+# n = 1
+# count = 25
+# while index < count :
 #     h = (b1 - a1) / n
 #     total_area = 0
 #     for i in range(0, n) :
@@ -37,29 +38,18 @@ from mpl_toolkits import mplot3d
 #     approx.append(total_area)
 #     error.append(np.abs(total_area - exact_area))
 #     errorh.append((np.abs(total_area - exact_area)) / (h * h))
+#     index += 1
+#     arr.append(n)
+#     arr2.append(1 / n)
+#     n *= 2
 
 # title_text = 'Error in the Trapezoid Method (changing h), Function: e^-x^2'
 # fig_background_color = 'skyblue'
 # fig_border = 'steelblue'
-# data =  [
-#         [ 'h', 'Trapezoid Approximation', 'Error', 'Error/h^2'],
-#         [ arr[0], arr2[0], approx[0], error[0], errorh[0]], 
-#         [ arr[1], arr2[1], approx[1], error[1], errorh[1]],
-#         [ arr[2], arr2[2], approx[2], error[2], errorh[2]],
-#         [ arr[3], arr2[3], approx[3], error[3], errorh[3]],
-#         [ arr[4], arr2[4], approx[4], error[4], errorh[4]],
-#         [ arr[5], arr2[5], approx[5], error[5], errorh[5]],
-#         [ arr[6], arr2[6], approx[6], error[6], errorh[6]],
-#         [ arr[7], arr2[7], approx[7], error[7], errorh[7]],
-#         [ arr[8], arr2[8], approx[8], error[8], errorh[8]],
-#         [ arr[9], arr2[9], approx[9], error[9], errorh[9]],
-#         [ arr[10], arr2[10], approx[10], error[10], errorh[10]],
-#         [ arr[11], arr2[11], approx[11], error[11], errorh[11]],
-#         [ arr[12], arr2[12], approx[12], error[12], errorh[12]],
-#         [ arr[13], arr2[13], approx[13], error[13], errorh[13]],
-#         [ arr[14], arr2[14], approx[14], error[14], errorh[14]],
-#         [ arr[15], arr2[15], approx[15], error[15], errorh[15]],
-#     ]
+# data = []
+# data.append(['h', 'Trapezoid Approximation', 'Error', 'Error/h^2'])
+# for i in range(0, count) :
+#     data.append([arr[i], arr2[i], approx[i], error[i], errorh[i]])
 
 # #ERROR PLOT
 # fig = plt.figure()
@@ -104,7 +94,7 @@ from mpl_toolkits import mplot3d
 # plt.show()
 
 # #GRAPH OF FUNCTION
-# Num = 64
+# Num = 4
 # # x and y values for the trapezoid rule
 # x = np.linspace(a1, b1, Num + 1)
 # y = f(x)
@@ -123,14 +113,16 @@ from mpl_toolkits import mplot3d
 
 # #func = e^-x^2
 # f = lambda x : np.exp(-(x**2))
-# #this arrary is the different L/2 tried to increase accuracy of integral
-# L = [1, 2, 3, 4, 6, 8, 12, 16, 32]
 # exact_area = np.sqrt(np.pi)
 # approx2 = []
 # error2 = []
 # errorh2 = []
 # n1 = 4096
-# for b in L :
+# count2 = 20
+# b = 1
+# #this arrary is the different L/2 tried to increase accuracy of integral
+# L = []
+# while b < count2 :
 #     a = -b
 #     h = (b - a) / n1
 #     total_area = 0
@@ -139,19 +131,13 @@ from mpl_toolkits import mplot3d
 #     approx2.append(total_area)
 #     error2.append(np.abs(total_area - exact_area))
 #     errorh2.append((np.abs(total_area - exact_area)) / (h * h))
+#     b += 1
+#     L.append(b)
 
-# data2 =  [
-#         [ 'L', 'Trapezoid Approximation', 'Error', 'Error/h^2'],
-#         [ '.', L[0], approx2[0], error2[0], errorh2[0]], 
-#         [ '.', L[1], approx2[1], error2[1], errorh2[1]],
-#         [ '.', L[2], approx2[2], error2[2], errorh2[2]],
-#         [ '.', L[3], approx2[3], error2[3], errorh2[3]],
-#         [ '.', L[4], approx2[4], error2[4], errorh2[4]],
-#         [ '.', L[5], approx2[5], error2[5], errorh2[5]],
-#         [ '.', L[6], approx2[6], error2[6], errorh2[6]],
-#         [ '.', L[7], approx2[7], error2[7], errorh2[7]],
-#         [ '.', L[8], approx2[8], error2[8], errorh2[8]],
-#     ]
+# data2 = []
+# data2.append(['L', 'Trapezoid Approximation', 'Error', 'Error/h^2'])
+# for i in range(0, count2 - 1) :
+#     data2.append(['.', L[i], approx2[i], error2[i], errorh2[i]])
 
 # title_text2 = 'Error in the Trapezoid Method (changing L), Function: e^-x^2'
 # fig_background_color = 'skyblue'
@@ -221,43 +207,43 @@ from mpl_toolkits import mplot3d
 
 #func = e^-x^2
 f = lambda x : np.exp(-(x**2))
-#this arrary is the different L/2 tried to increase accuracy of integral
-L = [1, 2, 4, 8, 16]
-labL = ['L = 1', 'L = 2', 'L = 4', 'L = 8', 'L = 16']
-# exact_area = np.sqrt(np.pi)
-exact_area = 0.74682413281229
-columns = ('h', 'trapezoid area', 'error') 
-arr = [1, 2, 4, 8, 16, 32, 64, 128]
-labh = [ 'h = 1', 'h = 1/2', 'h = 1/4', 'h = 1/8', 'h = 1/16', 'h = 1/32', 'h = 1/64', 'h = 1/128']
-# Creates a list containing arr lists, each of L items, all set to -1
-e = [[-1 for x in range(len(L))] for y in range(len(arr))] 
+exact_area = np.sqrt(np.pi)
+# exact_area = 0.74682413281229
 i = 0
-for n in arr :
+n = 1
+index = 0
+count = 15
+labh = []
+count2 = 6
+L = []
+# create L x h array
+e = [[-1 for x in range(count2 - 1)] for y in range(count)]
+while index < count :
     j = 0
-    for b in L:
-        a = 0
+    b = 2
+    while b < ((2 * count2) - 1):
+        a = -b
         h = (b - a) / n
         total_area = 0
         for k in range(0, n) :
             total_area += h * 0.5 * (f(a + k * h) + f(a + (k + 1) * h))
         e[i][j] = np.abs(total_area - exact_area)
         j += 1
+        if i == 0 :
+            L.append(b)
+        b += 2
     i += 1
+    labh.append(1/n)
+    n *= 2 
+    index += 1
 
 title_text = 'Comparing Error in Changing L and h, Function: e^-x^2'
 fig_background_color = 'skyblue'
 fig_border = 'steelblue'
-data =  [
-        [ labL[0], labL[1], labL[2], labL[3], labL[4]],
-        [ labh[0], e[0][0], e[0][1], e[0][2], e[0][3]],  
-        [ labh[1], e[1][0], e[1][1], e[1][2], e[1][3]],
-        [ labh[2], e[2][0], e[2][1], e[2][2], e[2][3]],
-        [ labh[3], e[3][0], e[3][1], e[3][2], e[3][3]],
-        [ labh[4], e[4][0], e[4][1], e[4][2], e[4][3]],
-        [ labh[5], e[5][0], e[5][1], e[5][2], e[5][3]],
-        [ labh[6], e[6][0], e[6][1], e[6][2], e[6][3]],
-        [ labh[7], e[7][0], e[7][1], e[7][2], e[7][3]],
-    ]
+data = []
+data.append(['h below, L across', L[0], L[1], L[2], L[3], L[4]])
+for i in range(0, count) :
+    data.append(['.', labh[i], e[i][0], e[i][1], e[i][2], e[i][3], e[i][4]])
 
 # Pop the headers from the data array
 column_headers = data.pop(0)

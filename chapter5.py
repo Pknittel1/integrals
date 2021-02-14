@@ -107,9 +107,9 @@ x = Symbol('x')
 
 ## ******************** CHEBYSHEV POINTS ************************
 
-L = 4
+L = 1
 i = 0
-n = 16
+n = 8
 theta = i * math.pi / n
 xi = -1 * cos(theta) * L
 
@@ -130,6 +130,9 @@ for k in range(0, 1001) :
     y_value2 = np.exp(-(x_vals2[k] * x_vals2[k]))
     y_vals2.append(y_value2)
 
+#dont use polyfit, use my own code and a better mesh (can compare answer to polyfit)
+#build a code to use newtons form
+#eventually use barycentric form
 coefficients = np.polyfit(x_vals, y_vals, n + 1)
 poly = np.poly1d(coefficients)
 new_x = np.linspace(x_vals[0], x_vals[-1])
