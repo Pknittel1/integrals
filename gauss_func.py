@@ -12,86 +12,86 @@ from mpl_toolkits import mplot3d
 
 # TRAPEZOID INTEGRATION WITH UNIFORM POINT DISTRIBUTION 2D PARAMETER TESTING *******************************
 
-# #func = e^-x^2
-# f = lambda x : np.exp(-(x**2))
-# a1 = -8
-# b1 = 8
-# exact_area = np.sqrt(np.pi)
-# # this is the exact area form the interval from 0 to 1
-# # a1 = 0
-# # b1 = 1
-# # exact_area = 0.74682413281229
-# approx = []
-# error = []
-# errorh = []
-# #use a loop and change limit on loop and extend
-# arr = []
-# arr2 = []
-# index = 0
-# n = 1
-# count = 25
-# while index < count :
-#     h = (b1 - a1) / n
-#     total_area = 0
-#     for i in range(0, n) :
-#         total_area += h * 0.5 * (f(a1 + i * h) + f(a1 + (i + 1) * h))
-#     approx.append(total_area)
-#     error.append(np.abs(total_area - exact_area))
-#     errorh.append((np.abs(total_area - exact_area)) / (h * h))
-#     index += 1
-#     arr.append(n)
-#     arr2.append(1 / n)
-#     n *= 2
+#func = e^-x^2
+f = lambda x : np.exp(-(x**2))
+a1 = -4
+b1 = 4
+exact_area = np.sqrt(np.pi)
+# this is the exact area form the interval from 0 to 1
+# a1 = 0
+# b1 = 1
+# exact_area = 0.74682413281229
+approx = []
+error = []
+errorh = []
+#use a loop and change limit on loop and extend
+arr = []
+arr2 = []
+index = 0
+n = 1
+count = 20
+while index < count :
+    h = (b1 - a1) / n
+    total_area = 0
+    for i in range(0, n) :
+        total_area += h * 0.5 * (f(a1 + i * h) + f(a1 + (i + 1) * h))
+    approx.append(total_area)
+    error.append(np.abs(total_area - exact_area))
+    errorh.append((np.abs(total_area - exact_area)) / (h * h))
+    index += 1
+    arr.append(n)
+    arr2.append(1 / n)
+    n *= 2
 
-# title_text = 'Error in the Trapezoid Method (changing h), Function: e^-x^2'
-# fig_background_color = 'skyblue'
-# fig_border = 'steelblue'
-# data = []
-# data.append(['h', 'Trapezoid Approximation', 'Error', 'Error/h^2'])
-# for i in range(0, count) :
-#     data.append([arr[i], arr2[i], approx[i], error[i], errorh[i]])
+title_text = 'Error in the Trapezoid Method (changing h), Function: e^-x^2'
+fig_background_color = 'skyblue'
+fig_border = 'steelblue'
+data = []
+data.append(['h', 'Trapezoid Approximation', 'Error', 'Error/h^2'])
+for i in range(0, count) :
+    data.append([arr[i], arr2[i], approx[i], error[i], errorh[i]])
 
-# #ERROR PLOT
-# fig = plt.figure()
-# ax = fig.add_subplot()
-# ax.plot(arr2, error, 'ro')
-# ax.set_yscale('log')
-# ax.set_xscale('log')
-# ax.set_xlabel('h')
-# ax.set_ylabel('error')
-# ax.set_title('h error plot')
+#ERROR PLOT
+fig = plt.figure()
+ax = fig.add_subplot()
+ax.plot(arr2, error, 'ro')
+ax.set_yscale('log')
+ax.set_xscale('log')
+ax.set_xlabel('h')
+ax.set_ylabel('error')
+ax.set_title('h error plot')
 
-# # Pop the headers from the data array
-# column_headers = data.pop(0)
-# row_headers = [x.pop(0) for x in data]
-# cell_text = []
-# for row in data:
-#     cell_text.append([x for x in row])
-# # Create the figure. Setting a small pad on tight_layout
-# plt.figure(linewidth = 2,
-#            edgecolor = fig_border,
-#            facecolor = fig_background_color,
-#            tight_layout = {'pad':1},
-#           )
-# # Add a table at the bottom of the axes
-# the_table = plt.table(cellText = cell_text,
-#                       rowLabels = row_headers,
-#                       rowLoc = 'right',
-#                       colLabels = column_headers,
-#                       loc = 'center')
-# # Make the rows taller 
-# the_table.scale(1, 1.2)
-# the_table.auto_set_font_size(False)
-# the_table.set_fontsize(9)
-# # Hide axes
-# ax = plt.gca()
-# ax.get_xaxis().set_visible(False)
-# ax.get_yaxis().set_visible(False)
-# # Hide axes border
-# plt.box(on=None)
-# # Add title
-# plt.suptitle(title_text)
-# plt.show()
+# Pop the headers from the data array
+column_headers = data.pop(0)
+row_headers = [x.pop(0) for x in data]
+cell_text = []
+for row in data:
+    cell_text.append([x for x in row])
+# Create the figure. Setting a small pad on tight_layout
+plt.figure(linewidth = 2,
+           edgecolor = fig_border,
+           facecolor = fig_background_color,
+           tight_layout = {'pad':1},
+          )
+# Add a table at the bottom of the axes
+the_table = plt.table(cellText = cell_text,
+                      rowLabels = row_headers,
+                      rowLoc = 'right',
+                      colLabels = column_headers,
+                      loc = 'center')
+# Make the rows taller 
+the_table.scale(1, 1.2)
+the_table.auto_set_font_size(False)
+the_table.set_fontsize(9)
+# Hide axes
+ax = plt.gca()
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+# Hide axes border
+plt.box(on=None)
+# Add title
+plt.suptitle(title_text)
+plt.show()
 
 # #GRAPH OF FUNCTION
 # Num = 4
@@ -205,77 +205,77 @@ from mpl_toolkits import mplot3d
 
 # TRAPEZOID INTEGRATION 2D PARAMETER TESTING comparing error of h and L *************************************
 
-#func = e^-x^2
-f = lambda x : np.exp(-(x**2))
-exact_area = np.sqrt(np.pi)
-# exact_area = 0.74682413281229
-i = 0
-n = 1
-index = 0
-count = 15
-labh = []
-count2 = 6
-L = []
-# create L x h array
-e = [[-1 for x in range(count2 - 1)] for y in range(count)]
-while index < count :
-    j = 0
-    b = 2
-    while b < ((2 * count2) - 1):
-        a = -b
-        h = (b - a) / n
-        total_area = 0
-        for k in range(0, n) :
-            total_area += h * 0.5 * (f(a + k * h) + f(a + (k + 1) * h))
-        e[i][j] = np.abs(total_area - exact_area)
-        j += 1
-        if i == 0 :
-            L.append(b)
-        b += 2
-    i += 1
-    labh.append(1/n)
-    n *= 2 
-    index += 1
+# #func = e^-x^2
+# f = lambda x : np.exp(-(x**2))
+# exact_area = np.sqrt(np.pi)
+# #exact_area = 0.74682413281229
+# i = 0
+# n = 1
+# index = 0
+# count = 8
+# labh = []
+# count2 = 6
+# L = []
+# # create L x h array
+# e = [[-1 for x in range(count2 - 1)] for y in range(count)]
+# while index < count :
+#     j = 0
+#     b = 1
+#     while b < ((2 * count2) - 1):
+#         a = -b
+#         h = (b - a) / n
+#         total_area = 0
+#         for k in range(0, n) :
+#             total_area += h * 0.5 * (f(a + k * h) + f(a + (k + 1) * h))
+#         e[i][j] = np.abs(total_area - exact_area)
+#         j += 1
+#         if i == 0 :
+#             L.append(b)
+#         b += 2
+#     i += 1
+#     labh.append(1/n)
+#     n *= 2 
+#     index += 1
 
-title_text = 'Comparing Error in Changing L and h, Function: e^-x^2'
-fig_background_color = 'skyblue'
-fig_border = 'steelblue'
-data = []
-data.append(['h below, L across', L[0], L[1], L[2], L[3], L[4]])
-for i in range(0, count) :
-    data.append(['.', labh[i], e[i][0], e[i][1], e[i][2], e[i][3], e[i][4]])
+# title_text = 'Comparing Error in Changing L and h, Function: e^-x^2'
+# fig_background_color = 'skyblue'
+# fig_border = 'steelblue'
+# data = []
+# data.append(['h below, L across', L[0], L[1], L[2], L[3], L[4]])
+# for i in range(0, count) :
+#     data.append(['.', labh[i], e[i][0], e[i][1], e[i][2], e[i][3], e[i][4]])
 
-# Pop the headers from the data array
-column_headers = data.pop(0)
-row_headers = [x.pop(0) for x in data]
-cell_text = []
-for row in data:
-    cell_text.append([x for x in row])
-# Create the figure. Setting a small pad on tight_layout
-plt.figure(linewidth = 2,
-           edgecolor = fig_border,
-           facecolor = fig_background_color,
-           tight_layout = {'pad':1},
-          )
-# Add a table at the bottom of the axes
-the_table = plt.table(cellText = cell_text,
-                      rowLabels = row_headers,
-                      rowLoc = 'right',
-                      colLabels = column_headers,
-                      loc = 'center')
-# Make the rows taller 
-the_table.scale(1, 1.2)
-the_table.auto_set_font_size(False)
-the_table.set_fontsize(8)
-# Hide axes
-ax = plt.gca()
-ax.get_xaxis().set_visible(False)
-ax.get_yaxis().set_visible(False)
-# Hide axes border
-plt.box(on=None)
-# Add title
-plt.suptitle(title_text)
-plt.show()
+# # Pop the headers from the data array
+# column_headers = data.pop(0)
+# row_headers = [x.pop(0) for x in data]
+# cell_text = []
+# for row in data:
+#     cell_text.append([x for x in row])
+# # Create the figure. Setting a small pad on tight_layout
+# plt.figure(linewidth = 2,
+#            edgecolor = fig_border,
+#            facecolor = fig_background_color,
+#            tight_layout = {'pad':1},
+#           )
+# # Add a table at the bottom of the axes
+# the_table = plt.table(cellText = cell_text,
+#                       rowLabels = row_headers,
+#                       rowLoc = 'right',
+#                       colLabels = column_headers,
+#                       loc = 'center')
+# # Make the rows taller 
+# the_table.scale(1, 1.2)
+# the_table.auto_set_font_size(False)
+# the_table.set_fontsize(8)
+# # Hide axes
+# ax = plt.gca()
+# ax.get_xaxis().set_visible(False)
+# ax.get_yaxis().set_visible(False)
+# # Hide axes border
+# plt.box(on=None)
+# # Add title
+# plt.suptitle(title_text)
+# plt.show()
 
 # #GRAPH OF FUNCTION
 # N = 4
