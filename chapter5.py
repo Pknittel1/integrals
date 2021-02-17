@@ -14,7 +14,7 @@ from numpy.polynomial.polynomial import Polynomial
 x = Symbol('x')
 
 
-### ****************** TAYLOR SERIES EXPANSION *********************
+### ****************** TAYLOR SERIES EXPANSION **********************************************************
 
 # plt.rcParams['lines.linewidth'] = 2
 
@@ -40,9 +40,9 @@ x = Symbol('x')
 # p.title = 'Taylor Series Expansion'
 # p.show()
 
-### ************** END OF TAYLOR SERIES EXPANSION *****************
+### ************** END OF TAYLOR SERIES EXPANSION ******************************************************
 
-### ****************** LAGRANGE INTERPOLATION *********************
+### ****************** LAGRANGE INTERPOLATION **********************************************************
 
 # does not work right now
 
@@ -62,84 +62,135 @@ x = Symbol('x')
 
 # p.show()
 
-### ************** END OF LAGRANGE INTERPOLATION *****************
+### ************** END OF LAGRANGE INTERPOLATION ******************************************************
 
-### ****************** NEWTON INTERPOLATION **********************
-
-#find a library/function for
-
-### *************** END OF NEWTON INTERPOLATION ******************
-
-### ********************* UNIFORM POINTS *************************
-
+### ********************* UNIFORM POINTS **************************************************************
 # L = 1
 # i = 0
 # n = 8
 # h = 2 / n
 # xi = -L + (i * h)
 
-# func = 1 / (1 + 25 * x * x)
-
+# #finding the uniform points of the given function
 # x_vals = []
 # y_vals = []
 # for j in range(n + 1) :
 #     x_value = -L + (j * h)
 #     x_vals.append(x_value)
 #     y_value = 1 / (1 + 25 * x_value * x_value)
+#     #y_value = np.exp(-(x_value * x_value))
 #     y_vals.append(y_value)
 
-# x_vals2 = np.linspace(-L, L, 1001)
+# # plotting the actual function
+# x_vals2 = np.linspace(-L - 0.5, L + 0.5, 1001)
 # y_vals2 = []
 # for k in range(0, 1001) :
 #     y_value2 = 1 / (1 + 25 * x_vals2[k] * x_vals2[k])
+#     #y_value2 = np.exp(-(x_vals2[k] * x_vals2[k]))
 #     y_vals2.append(y_value2)
 
-# coefficients = np.polyfit(x_vals, y_vals, n + 1)
-# poly = np.poly1d(coefficients)
-# new_x = np.linspace(x_vals[0], x_vals[-1])
-# new_y = poly(new_x)
-# plt.plot(x_vals, y_vals, "o", new_x, new_y)
+# def _poly_newton_coefficient(x, y):
+#     m = len(x)
+#     x = np.copy(x)
+#     a = np.copy(y)
+#     for k in range(1, m):
+#         a[k:m] = (a[k:m] - a[k - 1])/(x[k:m] - x[k - 1])
+#     return a
+
+# def newton_polynomial(x_data, y_data, x):
+#     a = _poly_newton_coefficient(x_data, y_data)
+#     n = len(x_data) - 1  # Degree of polynomial
+#     p = a[n]
+#     for k in range(1, n + 1):
+#         p = a[n - k] + (x - x_data[n - k])*p
+#     return p
+
+# # plotting the newton polynomial
+# x_vals3 = np.linspace(-L - 0.5, L + 0.5, 1001)
+# y_vals3 = []
+# for k in range(0, 1001) :
+#     y_value3 = (newton_polynomial(x_vals, y_vals, x_vals3[k]))
+#     y_vals3.append(y_value3)
+
+# # plotting the cehbyshev points
+# plt.plot(x_vals, y_vals, "o")
+# # plotting the actual function
 # plt.plot(x_vals2, y_vals2)
-# plt.ylim(-2, 2)
+# # plotting newton polynomial
+# plt.plot(x_vals3, y_vals3)
+# plt.ylim(-0.5, 1.5)
+# plt.xlabel('y')
+# plt.ylabel('x')
+# plt.title('he')
+# plt.title('Newton Polynomial with Uniform Points, N = {}'.format(n))
 # plt.show()
 
-## ****************** END OF UNIFORM POINTS *********************
+## ****************** END OF UNIFORM POINTS **********************************************************
 
-## ******************** CHEBYSHEV POINTS ************************
+## ******************** CHEBYSHEV POINTS *********************************************************
 
 L = 1
 i = 0
-n = 8
+n = 4
 theta = i * math.pi / n
 xi = -1 * cos(theta) * L
 
+#finding the chebyshev points of the given function
 x_vals = []
 y_vals = []
 for j in range(n + 1) :
     theta = j * math.pi / n
     x_value = -1 * np.cos(theta) * L
     x_vals.append(x_value)
-    #y_value = 1 / (1 + 25 * x_value * x_value)
-    y_value = np.exp(-(x_value * x_value))
+    y_value = 1 / (1 + 25 * x_value * x_value)
+    #y_value = np.exp(-(x_value * x_value))
     y_vals.append(y_value)
 
-x_vals2 = np.linspace(-L, L, 1001)
+# plotting the actual function
+x_vals2 = np.linspace(-L - 0.5, L + 0.5, 1001)
 y_vals2 = []
 for k in range(0, 1001) :
-    #y_value2 = 1 / (1 + 25 * x_vals2[k] * x_vals2[k])
-    y_value2 = np.exp(-(x_vals2[k] * x_vals2[k]))
+    y_value2 = 1 / (1 + 25 * x_vals2[k] * x_vals2[k])
+    #y_value2 = np.exp(-(x_vals2[k] * x_vals2[k]))
     y_vals2.append(y_value2)
 
-#dont use polyfit, use my own code and a better mesh (can compare answer to polyfit)
-#build a code to use newtons form
-#eventually use barycentric form
-coefficients = np.polyfit(x_vals, y_vals, n + 1)
-poly = np.poly1d(coefficients)
-new_x = np.linspace(x_vals[0], x_vals[-1])
-new_y = poly(new_x)
-plt.plot(x_vals, y_vals, "o", new_x, new_y)
+# creating polynomial, returns 
+def _poly_newton_coefficient(x, y):
+    m = len(x)
+    x = np.copy(x)
+    a = np.copy(y)
+    for k in range(1, m):
+        a[k:m] = (a[k:m] - a[k - 1])/(x[k:m] - x[k - 1])
+    return a
+
+# returns pn(x) evaluted at x
+def newton_polynomial(x_data, y_data, x):
+    a = _poly_newton_coefficient(x_data, y_data)
+    n = len(x_data) - 1  # Degree of polynomial
+    p = a[n]
+    for k in range(1, n + 1):
+        p = a[n - k] + (x - x_data[n - k])*p
+    print(p)
+    return p
+
+# plotting the newton polynomial
+x_vals3 = np.linspace(-L - 0.5, L + 0.5, 1001)
+y_vals3 = []
+for k in range(0, 1001) :
+    y_value3 = (newton_polynomial(x_vals, y_vals, x_vals3[k]))
+    y_vals3.append(y_value3)
+
+# plotting the cehbyshev points
+plt.plot(x_vals, y_vals, "o")
+# plotting the actual function
 plt.plot(x_vals2, y_vals2)
+# plotting newton polynomial
+plt.plot(x_vals3, y_vals3)
 plt.ylim(-0.5, 1.5)
+plt.xlabel('y')
+plt.ylabel('x')
+plt.title('he')
+plt.title('Newton Polynomial with Chebyshev Points, N = {}'.format(n))
 plt.show()
 
 ### ***************** END OF CHEBYSHEV POINTS ********************
