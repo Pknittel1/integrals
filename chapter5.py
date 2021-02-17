@@ -127,7 +127,7 @@ x = Symbol('x')
 
 ## ****************** END OF UNIFORM POINTS **********************************************************
 
-## ******************** CHEBYSHEV POINTS *********************************************************
+## ******************** CHEBYSHEV POINTS NEWTON METHOD **************************************************
 
 L = 1
 i = 0
@@ -160,16 +160,19 @@ def _poly_newton_coefficient(x, y):
     x = np.copy(x)
     a = np.copy(y)
     for k in range(1, m):
-        a[k:m] = (a[k:m] - a[k - 1])/(x[k:m] - x[k - 1])
+        # a[start:stop] = a[k:m], same notation as notes
+        a[k:m] = (a[k:m] - a[k - 1]) / (x[k:m] - x[k - 1])
     return a
 
 # returns pn(x) evaluted at x
 def newton_polynomial(x_data, y_data, x):
     a = _poly_newton_coefficient(x_data, y_data)
-    n = len(x_data) - 1  # Degree of polynomial
+    # Degree of polynomial
+    n = len(x_data) - 1 
     p = a[n]
     for k in range(1, n + 1):
-        p = a[n - k] + (x - x_data[n - k])*p
+        #updating pn(x) polynomial based on pn-1(x) and extra factor
+        p = a[n - k] + (x - x_data[n - k]) * p
     print(p)
     return p
 
