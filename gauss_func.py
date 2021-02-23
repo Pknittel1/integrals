@@ -14,9 +14,10 @@ from mpl_toolkits import mplot3d
 
 #func = e^-x^2
 f = lambda x : np.exp(-(x**2))
-a1 = -4
-b1 = 4
-exact_area = np.sqrt(np.pi)
+a1 = -2
+b1 = 2
+#exact area minus the expected area of the integral needing to be excluded due to truncating domain
+exact_area = np.sqrt(np.pi) - (np.exp(-(b1**4)))
 # this is the exact area form the interval from 0 to 1
 # a1 = 0
 # b1 = 1
@@ -24,12 +25,11 @@ exact_area = np.sqrt(np.pi)
 approx = []
 error = []
 errorh = []
-#use a loop and change limit on loop and extend
 arr = []
 arr2 = []
 index = 0
 n = 1
-count = 22
+count = 20
 while index < count :
     h = (b1 - a1) / n
     total_area = 0
@@ -61,37 +61,37 @@ ax.set_xlabel('h')
 ax.set_ylabel('error')
 ax.set_title('h error plot')
 
-# # Pop the headers from the data array
-# column_headers = data.pop(0)
-# row_headers = [x.pop(0) for x in data]
-# cell_text = []
-# for row in data:
-#     cell_text.append([x for x in row])
-# # Create the figure. Setting a small pad on tight_layout
-# plt.figure(linewidth = 2,
-#            edgecolor = fig_border,
-#            facecolor = fig_background_color,
-#            tight_layout = {'pad':1},
-#           )
-# # Add a table at the bottom of the axes
-# the_table = plt.table(cellText = cell_text,
-#                       rowLabels = row_headers,
-#                       rowLoc = 'right',
-#                       colLabels = column_headers,
-#                       loc = 'center')
-# # Make the rows taller 
-# the_table.scale(1, 1.2)
-# the_table.auto_set_font_size(False)
-# the_table.set_fontsize(9)
-# # Hide axes
-# ax = plt.gca()
-# ax.get_xaxis().set_visible(False)
-# ax.get_yaxis().set_visible(False)
-# # Hide axes border
-# plt.box(on=None)
-# # Add title
-# plt.suptitle(title_text)
-# plt.show()
+# Pop the headers from the data array
+column_headers = data.pop(0)
+row_headers = [x.pop(0) for x in data]
+cell_text = []
+for row in data:
+    cell_text.append([x for x in row])
+# Create the figure. Setting a small pad on tight_layout
+plt.figure(linewidth = 2,
+           edgecolor = fig_border,
+           facecolor = fig_background_color,
+           tight_layout = {'pad':1},
+          )
+# Add a table at the bottom of the axes
+the_table = plt.table(cellText = cell_text,
+                      rowLabels = row_headers,
+                      rowLoc = 'right',
+                      colLabels = column_headers,
+                      loc = 'center')
+# Make the rows taller 
+the_table.scale(1, 1.2)
+the_table.auto_set_font_size(False)
+the_table.set_fontsize(9)
+# Hide axes
+ax = plt.gca()
+ax.get_xaxis().set_visible(False)
+ax.get_yaxis().set_visible(False)
+# Hide axes border
+plt.box(on=None)
+# Add title
+plt.suptitle(title_text)
+plt.show()
 
 # #GRAPH OF FUNCTION
 # Num = 4
