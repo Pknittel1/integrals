@@ -14,10 +14,12 @@ from mpl_toolkits import mplot3d
 
 #func = e^-x^2
 f = lambda x : np.exp(-(x**2))
-a1 = -2
-b1 = 2
+a1 = -8
+b1 = 8
 #exact area minus the expected area of the integral needing to be excluded due to truncating domain
-exact_area = np.sqrt(np.pi) - (np.exp(-(b1**4)))
+exact_area = np.sqrt(np.pi) - (np.exp(-(b1**2)))
+print('truncation error:')
+print((np.exp(-(b1**2))))
 # this is the exact area form the interval from 0 to 1
 # a1 = 0
 # b1 = 1
