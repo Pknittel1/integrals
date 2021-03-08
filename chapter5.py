@@ -173,7 +173,6 @@ def newton_polynomial(x_data, y_data, x):
     for k in range(1, n + 1):
         #updating pn(x) polynomial based on pn-1(x) and extra factor
         p = a[n - k] + (x - x_data[n - k]) * p
-    print(p)
     return p
 
 # plotting the newton polynomial
